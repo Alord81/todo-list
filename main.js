@@ -21,9 +21,6 @@ function addToLocalStoge() {
 
 
 function fallPageTasks() {
-
-    console.log(tasks.length)
-    console.log(100 / tasks.length)
     function priorityColor(pri) {
         if (pri === 'عالية') {
             return 'high';
@@ -80,14 +77,12 @@ function fallPageTasks() {
 
 let getPriOpt = document.querySelectorAll('header .nav-list li')
 
-console.log(getPriOpt)
 
 fallPageTasks()
 
 
 function btnOfDone(num) {
     document.querySelectorAll('.task ul')[num].parentElement.classList.toggle('complete')
-    console.log(tasks[num].status === false)
     if (tasks[num].status === false) {
         tasks[num].status = true
         addToLocalStoge()
@@ -96,7 +91,6 @@ function btnOfDone(num) {
         addToLocalStoge()
     }
     addToLocalStoge()
-    lineBar
 }
 
 function btnOfTrash(num) {
@@ -105,15 +99,13 @@ function btnOfTrash(num) {
         left: 0,
         behavior: 'smooth',
     })
-    console.log(num)
     document.querySelectorAll('.task ul')[num].parentElement.style.transform = 'translateX(-200%)';
     setTimeout(() => {
         document.querySelectorAll('.task ul')[num].parentElement.remove()
         tasks.splice(num, 1)
         addToLocalStoge()
-    }, 10)
-    console.log(tasks)
-    fallPageTasks()
+        fallPageTasks()
+    }, 300)
 }
 
 
@@ -274,6 +266,3 @@ function editMsg(num) {
         x.remove()
     })
 }
-
-
-
